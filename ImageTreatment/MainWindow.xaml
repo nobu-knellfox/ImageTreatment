@@ -1,0 +1,21 @@
+﻿<Window x:Class="ImageTreatment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageTreatment"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1059.334" Width="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="image" Margin="0,-20,-6.667,90"  Height="960" Width="1280" MouseDown="image_MouseDown" MouseUp="image_MouseUp" MouseMove="image_MouseMove">
+            <Image x:Name="capture" Height="960" Source="capture2.bmp" Stretch="Fill" Canvas.Top="0" Width="1280"/>
+        </Canvas>
+        <Button x:Name="next" Content="next" Canvas.Left="508" Canvas.Top="807" Width="104" Margin="518,788,651.333,216" Click="next_Click"/>
+        <Button x:Name="input" Content="input" HorizontalAlignment="Left" Margin="131,788,0,0" VerticalAlignment="Top" Width="98" Height="26" Click="input_Click"/>
+        <Button x:Name="save" Content="save" HorizontalAlignment="Left" Margin="269,788,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="save_Click"/>
+        <Button x:Name="reset" Content="reset" HorizontalAlignment="Left" Margin="395,788,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="reset_Click"/>
+    </Grid>
+</Window>
