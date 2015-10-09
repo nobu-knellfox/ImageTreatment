@@ -3,6 +3,8 @@ using Microsoft.Win32;
 using System;
 using System.Windows.Shapes;
 using System.Windows.Controls;
+using System.IO;
+using System.Text;
 
 namespace ImageTreatment
 {
@@ -16,32 +18,53 @@ namespace ImageTreatment
 
     public partial class MainWindow : Window
     {
-        private string filename;
         private System.Collections.Generic.List<Points> points = new System.Collections.Generic.List<Points>();
         private Point temp_p;
         private bool onclick = false;
         private System.Collections.Generic.List<Line[]> line = new System.Collections.Generic.List<Line[]>();
-
+        string[] files;
+        int fileindex = 0;
+        System.IO.StreamWriter stream;
 
         public MainWindow()
         {
             InitializeComponent();
+            stream = new StreamWriter(@"./info.dat", false, Encoding.GetEncoding("Shift_JIS"));
+            stream.Close();
         }
 
         private void input_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd;
-            ofd = new OpenFileDialog();
-            ofd.FileName = "";
-            ofd.DefaultExt = "*.*";
-            if (ofd.ShowDialog() == true){
-                filename = ofd.FileName;
-            }
-            capture.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(filename));
+            files = System.IO.Directory.GetFiles(@"./img", "*", System.IO.SearchOption.AllDirectories);
+
+
+            capture.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(System.IO.Path.GetFullPath(@files[fileindex])));
         }
 
         private void save_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+            stream = new StreamWriter(@"./info.dat", true, Encoding.GetEncoding("Shift_JIS"));
+
+            string writeline = "";
+            writeline += files[fileindex] + " ";
+            writeline += points.Count.ToString();
+
+            foreach (Points pts in points)
+            {
+
+                writeline += " " + ((int)pts.start.X).ToString() + " " + ((int)pts.start.Y).ToString() + " ";
+                writeline += ((int)(pts.end.X - pts.start.X)).ToString() + " " + ((int)(pts.end.Y - pts.start.Y)).ToString();
+            }
+
+            stream.WriteLine(writeline);
+
+            foreach (Line[] lis in line)
+                foreach (Line li in lis)
+                    image.Children.Remove(li);
+
+            line.Clear();
+            points.Clear();
+            stream.Close();
 
         }
 
@@ -103,7 +126,14 @@ namespace ImageTreatment
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
+            if(files.Length -1 == fileindex)
+            {
+                MessageBox.Show("aaaa");
+                return;
+            }
 
+            ++fileindex;
+            capture.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(System.IO.Path.GetFullPath(@files[fileindex])));
         }
 
         private void reset_Click(object sender, RoutedEventArgs e)
