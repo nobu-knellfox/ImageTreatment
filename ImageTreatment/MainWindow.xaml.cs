@@ -57,7 +57,7 @@ namespace ImageTreatment
             foreach (Line li in line[line.Count-1])
             {
                 li.Stroke = System.Windows.Media.Brushes.Red;
-                li.StrokeThickness = 3;
+                li.StrokeThickness = 1;
 
                 image.Children.Add(li);
             }
