@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageTreatment"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1059.334" Width="1280">
+        Title="MainWindow" Height="966.667" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -13,9 +13,9 @@
         <Canvas x:Name="image" Margin="0,-20,-6.667,90"  Height="960" Width="1280" MouseDown="image_MouseDown" MouseUp="image_MouseUp" MouseMove="image_MouseMove">
             <Image x:Name="capture" Height="960" Source="capture2.bmp" Stretch="Fill" Canvas.Top="0" Width="1280"/>
         </Canvas>
-        <Button x:Name="next" Content="next" Canvas.Left="508" Canvas.Top="807" Margin="382,945,788,59" Click="next_Click"/>
-        <Button x:Name="input" Content="input" HorizontalAlignment="Left" Margin="32,945,0,0" VerticalAlignment="Top" Width="98" Height="26" Click="input_Click"/>
-        <Button x:Name="save" Content="save" HorizontalAlignment="Left" Margin="150,945,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="save_Click"/>
-        <Button x:Name="reset" Content="reset" HorizontalAlignment="Left" Margin="269,945,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="reset_Click"/>
+        <Button x:Name="next" Content="next" Canvas.Left="508" Canvas.Top="807" Width="104" Margin="269,654,900.333,0" Click="next_Click" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="input" Content="input" HorizontalAlignment="Left" Margin="131,788,0,0" VerticalAlignment="Top" Width="98" Height="26" Click="input_Click"/>
+        <Button x:Name="save" Content="save" HorizontalAlignment="Left" Margin="269,788,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="save_Click"/>
+        <Button x:Name="reset" Content="reset" HorizontalAlignment="Left" Margin="395,788,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="reset_Click"/>
     </Grid>
 </Window>
